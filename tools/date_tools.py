@@ -48,8 +48,6 @@ def calculate_days_between_dates(date_iso_start: str, date_iso_end: str) -> floa
     try:
         if not date_iso_start or not date_iso_end:
             return 0.0
-        for s in (date_iso_start, date_iso_end):
-            s = s.replace("Z", "+00:00")
         start_part = date_iso_start.split("T")[0][:10]
         end_part = date_iso_end.split("T")[0][:10]
         dt_start = datetime.strptime(start_part, "%Y-%m-%d")

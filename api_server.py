@@ -14,7 +14,7 @@ import json
 import logging
 import traceback
 from pathlib import Path
-from datetime import datetime
+from datetime import datetime, timezone
 
 import os
 from dotenv import load_dotenv
@@ -177,7 +177,7 @@ async def run_message(request: Request, user_info: Dict[str, Any] = Depends(_get
 @app.get("/healthz")
 async def healthz():
     return JSONResponse(
-        content={"status": "ok", "timestamp": datetime.utcnow().isoformat() + "Z"},
+        content={"status": "ok", "timestamp": datetime.now(timezone.utc).isoformat()},
         status_code=200,
     )
 

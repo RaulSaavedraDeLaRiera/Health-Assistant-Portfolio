@@ -1,17 +1,10 @@
 """Wrapper for AgentTool with optional debug logging."""
 
 from __future__ import annotations
-import os
 from typing import Any
 from google.adk.tools.agent_tool import AgentTool
 from google.adk.tools.tool_context import ToolContext
-
-
-def _tools_debug_enabled() -> bool:
-    return (
-        os.getenv("TOOLS_DEBUG", "FALSE").upper() == "TRUE"
-        or os.getenv("DEBUG_INFO", "FALSE").upper() == "TRUE"
-    )
+from tools.logged_tool import tools_debug_enabled as _tools_debug_enabled
 
 
 def _tool_name(t: Any) -> str:
